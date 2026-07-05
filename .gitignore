@@ -1,0 +1,92 @@
+# ============================================================
+#  VulnScanner – Root .gitignore
+# ============================================================
+
+# ------------------------------------------------------------
+# Python / Backend
+# ------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+.Python
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+ENV/
+
+# Pytest / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
+
+# mypy / pyright
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyright/
+
+# ------------------------------------------------------------
+# Secrets / Environment variables
+# ------------------------------------------------------------
+# Keep .env.example but ignore real .env files
+.env
+backend/.env
+*.env.local
+*.env.*.local
+
+# ------------------------------------------------------------
+# Generated reports (PDF / JSON output from scans)
+# ------------------------------------------------------------
+backend/reports/*.pdf
+backend/reports/*.json
+# Keep the directory itself (tracked via .gitkeep)
+!backend/reports/.gitkeep
+
+# ------------------------------------------------------------
+# Node / Frontend
+# ------------------------------------------------------------
+node_modules/
+frontend/node_modules/
+
+# Vite build output
+dist/
+dist-ssr/
+frontend/dist/
+frontend/dist-ssr/
+
+# npm / yarn / pnpm logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# local env overrides
+*.local
+
+# ------------------------------------------------------------
+# Editor / OS
+# ------------------------------------------------------------
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
+desktop.ini
