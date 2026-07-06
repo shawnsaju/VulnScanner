@@ -579,3 +579,9 @@ VulnScanner/
 ---
 
 _Built for the Cybersecurity + Full-Stack Developer portfolio | FastAPI + React + Recharts + ReportLab_
+
+## Usage
+
+```bash
+python3 main.py
+```
