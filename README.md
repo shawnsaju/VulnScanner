@@ -191,43 +191,43 @@ Client-side routing between:
 ## Architecture
 
 ```
-┌─────────────────────────────────────────────────┐
-│                  USER BROWSER                    │
-│                                                  │
-│  React SPA (port 5173)                           │
-│  ┌──────────┐  ┌──────────┐  ┌──────────────┐  │
-│  │ ScanForm │  │ Progress │  │ Dashboard    │  │
-│  │          │  │ Stages   │  │ Charts Ports │  │
-│  └────┬─────┘  └────┬─────┘  └──────┬───────┘  │
-│       │             │  polling       │           │
-└───────┼─────────────┼────────────────┼───────────┘
+┌───────────────────────────────────────────────────┐
+│                  USER BROWSER                     │
+│                                                   │
+│  React SPA (port 5173)                            │
+│  ┌──────────┐  ┌──────────┐  ┌──────────────┐     │
+│  │ ScanForm │  │ Progress │  │ Dashboard    │     │
+│  │          │  │ Stages   │  │ Charts Ports │     │
+│  └────┬─────┘  └────┬─────┘  └──────┬───────┘     │
+│       │             │  polling       │            │
+└───────┼─────────────┼────────────────┼────────────┘
         │ POST /scan  │ GET /scan/:id  │ GET report
         ▼             ▼                ▼
-┌─────────────────────────────────────────────────┐
+┌───────────────────────────────────────────────────┐
 │              FastAPI Backend (port 8000)          │
-│                                                  │
-│  ┌───────────┐   ┌──────────────────────────┐   │
-│  │  /scan    │→  │  BackgroundTask: run_scan │   │
-│  │  /scan/:id│   │                          │   │
-│  │  /report  │   │  ┌──────────────────┐    │   │
-│  └───────────┘   │  │ port_scanner.py  │    │   │
-│                  │  │ http_scanner.py  │    │   │
-│  In-Memory Store │  │ whois_scanner.py │    │   │
-│  scan_store: {}  │  │ vuln_analyzer.py │    │   │
-│                  │  └──────────────────┘    │   │
-│                  └──────────────────────────┘   │
-│                                                  │
-│  PDF Generator (ReportLab)                       │
-└─────────────────────────────────────────────────┘
+│                                                   │
+│  ┌───────────┐   ┌──────────────────────────┐     │
+│  │ /scan     │ → │ BackgroundTask: run_scan │     │
+│  │ /scan/:id │   │                          │     │
+│  │ /report   │   │  ┌──────────────────┐    │     │
+│  └───────────┘   │  │ port_scanner.py  │    │     │
+│                  │  │ http_scanner.py  │    │     │
+│  In-Memory Store │  │ whois_scanner.py │    │     │
+│  scan_store: {}  │  │ vuln_analyzer.py │    │     │
+│                  │  └──────────────────┘    │     │
+│                  └──────────────────────────┘     │
+│                                                   │
+│  PDF Generator (ReportLab)                        │
+└───────────────────────────────────────────────────┘
         │
         ▼
-┌─────────────────────────────────────────────────┐
+┌───────────────────────────────────────────────────┐
 │                 INTERNET / TARGET                 │
-│  - DNS servers (dnspython)                       │
-│  - Target HTTP/HTTPS endpoint (requests)         │
-│  - Target TCP ports (socket)                     │
-│  - WHOIS servers (python-whois)                  │
-└─────────────────────────────────────────────────┘
+│  - DNS servers (dnspython)                        │
+│  - Target HTTP/HTTPS endpoint (requests)          │
+│  - Target TCP ports (socket)                      │
+│  - WHOIS servers (python-whois)                   │
+└───────────────────────────────────────────────────┘
 ```
 
 ---
