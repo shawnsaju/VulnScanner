@@ -575,7 +575,3 @@ VulnScanner/
 > - Unauthorized scanning may violate the **Computer Fraud and Abuse Act (CFAA)**, **GDPR**, and other laws
 > - The authors assume **no liability** for misuse of this tool
 > - For practice, use: `scanme.nmap.org`, `testphp.vulnweb.com`, or your own local VM
-
----
-
-_Built for the Cybersecurity + Full-Stack Developer portfolio | FastAPI + React + Recharts + ReportLab_
